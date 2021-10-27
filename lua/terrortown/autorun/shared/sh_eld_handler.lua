@@ -8,6 +8,8 @@ if SERVER then
       if winningTeam != "" and winningTeam != t then return end
       winningTeam = t
     end
+
+    if winningTeam == "" then return end
  
     -- Find and change Elderlys' team to winning team
     for _, ply in ipairs(player.GetAll()) do
@@ -16,7 +18,6 @@ if SERVER then
 
       if ply:GetSubRole() == ROLE_ELDERLY then
         ply:UpdateTeam(winningTeam, false)
-        if has_elderly == false then has_elderly = true end
       end
     end
   end)
